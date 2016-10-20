@@ -44,12 +44,11 @@
         android:text="Üye Ol!"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
         android:textColor="#FFFF"
         android:id="@+id/yeniUyeButton"
         android:background="@color/sari"
-        android:layout_below="@+id/uyeParola"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/uyeGirisButton"
+        android:layout_centerHorizontal="true" />
 
 
     <Button
@@ -60,8 +59,8 @@
         android:id="@+id/uyeGirisButton"
         android:background="@null"
         android:textColor="#FFFF"
-        android:layout_alignTop="@+id/yeniUyeButton"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -72,5 +71,6 @@
         android:hint="@string/Parola"
         android:layout_below="@+id/view"
         android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>
