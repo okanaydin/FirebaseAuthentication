@@ -27,14 +27,13 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
-    private EditText girisEmail, girisParola;
-    private Button girisButton, yeniSifreButton, uyeOlButton;
+    private EditText girisEmail,girisParola;
+    private Button girisButton,yeniSifreButton,uyeOlButton;
     private FirebaseAuth auth;
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
 
     private GoogleApiClient mGoogleApiClient;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,21 +42,21 @@ public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnec
         //FirebaseAuth sınıfının referans olduğu nesneleri kullanabilmek için getInstance methodunu kullanıyoruz.
         auth = FirebaseAuth.getInstance();
 
-        girisEmail = (EditText) findViewById(R.id.girisEmail);
-        girisParola = (EditText) findViewById(R.id.girisParola);
-        girisButton = (Button) findViewById(R.id.girisButton);
-        yeniSifreButton = (Button) findViewById(R.id.yeniSifreButton);
-        uyeOlButton = (Button) findViewById(R.id.uyeOlButton);
-        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        girisEmail = (EditText)findViewById(R.id.girisEmail);
+        girisParola = (EditText)findViewById(R.id.girisParola);
+        girisButton = (Button)findViewById(R.id.girisButton);
+        yeniSifreButton = (Button)findViewById(R.id.yeniSifreButton);
+        uyeOlButton = (Button)findViewById(R.id.uyeOlButton);
+        signInButton = (SignInButton)findViewById(R.id.sign_in_button);
 
         //Google Sign in Options Yapılandırması
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
-
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(Giris.this, (GoogleApiClient.OnConnectionFailedListener) this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
-
+                .enableAutoManage(Giris.this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,27 +65,27 @@ public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
+
         //Geçerli bir yetkilendirme olup olmadığını kontrol ediyoruz.
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        if(auth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }
 
 
         girisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String email = girisEmail.getText().toString();
                 final String parola = girisParola.getText().toString();
 
                 //Email girilmemiş ise kullanıcıyı uyarıyoruz.
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Mail giriniz", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen emailinizi giriniz", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                //Parola girilmemiş ise kullanıcıyı uyarıyoruz.
                 if (TextUtils.isEmpty(parola)) {
-                    Toast.makeText(getApplicationContext(), "Parola Giriniz", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen parolanızı giriniz", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -96,20 +95,17 @@ public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnec
                         .addOnCompleteListener(Giris.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-
                                 if (task.isSuccessful()) {
-                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                } else {
-                                    Log.e("Giriş Hatası", task.getException().getMessage());
+                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                 }
-
-
+                                else {
+                                    Log.e("Giriş Hatası",task.getException().getMessage());
+                                }
                             }
                         });
 
             }
         });
-
 
         yeniSifreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,16 +121,15 @@ public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnec
             }
         });
 
+
     }
 
     //Google ile Oturum acma islemleri
-
     private void signIn() {
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        startActivityForResult(signInIntent, RC_SIGN_IN);
 
-        Intent signIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signIntent, RC_SIGN_IN);
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -154,10 +149,7 @@ public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnec
     }
 
     //GoogleSignInAccount nesnesinden ID token'ı alıp, bu Firebase güvenlik referansını kullanarak
-
     // Firebase ile yetkilendirme işlemini gerçekleştiriyoruz
-
-
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         // Log.d(TAG, "firebaseAuthWithGooogle:" + acct.getId());
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
@@ -177,16 +169,10 @@ public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnec
                             finish();
                         }
                     }
-                });
-    }
-
+                });}
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         //Log.d(TAG, "onConnectionFailed:" + connectionResult);
-        Toast.makeText(this, "Google Play Services hatası.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
     }
-
 }
-
-
-

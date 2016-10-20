@@ -9,4 +9,40 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.okanaydin.firebaseauthentication.YeniParola">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="100dp"
+        android:id="@+id/imageView2" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <Button
+        android:text="Yeni Parola Bağlantısını Gönder!"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="#FFFF"
+        android:id="@+id/yeniParolaGonder"
+        android:background="@color/colorPrimaryDark"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email"
+        android:id="@+id/uyeEmail"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentStart="true" />
+
+
 </RelativeLayout>
