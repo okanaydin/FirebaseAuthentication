@@ -13,7 +13,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:id="@+id/logoImage"
         android:src="@mipmap/icon" />
 
@@ -25,7 +25,6 @@
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:layout_marginTop="10dp"
         android:padding="13dp"
         android:background="@drawable/shape"
         android:hint="@string/email"
@@ -56,7 +55,7 @@
             android:layout_height="45dp"
             android:textColor="@color/colorPrimary"
             android:textAllCaps="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/btn"/>
 
@@ -65,7 +64,7 @@
             android:id="@+id/uyeOlButton"
             android:layout_width="150dp"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/btn"/>
@@ -93,7 +92,7 @@
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
 
