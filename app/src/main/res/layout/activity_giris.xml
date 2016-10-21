@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/arkaplan"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,40 +12,37 @@
     tools:context="com.example.okanaydin.firebaseauthentication.Giris">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/logoImage"
+        android:src="@mipmap/icon" />
+
+
+
+
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginBottom="30dp"/>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp"
-            android:hint="@string/email"
-            android:id="@+id/girisEmail" />
-
-    </android.support.design.widget.TextInputLayout>
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:padding="13dp"
+        android:background="@drawable/shape"
+        android:hint="@string/email"
+        android:id="@+id/girisEmail" />
 
 
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
+            android:padding="13dp"
+            android:background="@drawable/shape"
             android:layout_marginTop="10dp"
             android:id="@+id/girisParola"
             android:hint="@string/Parola" />
 
-    </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,35 +52,35 @@
         <Button
             android:text="Giriş Yap"
             android:id="@+id/girisButton"
-            android:layout_width="140dp"
+            android:layout_width="150dp"
             android:layout_height="45dp"
-            android:textColor="#FFFF"
+            android:textColor="@color/colorPrimary"
             android:textAllCaps="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="@drawable/btn"/>
 
         <Button
             android:text="Üye Ol!"
             android:id="@+id/uyeOlButton"
-            android:layout_width="140dp"
+            android:layout_width="150dp"
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="#FFFF"
-            android:background="@color/colorPrimaryDark"/>
+            android:textColor="@color/colorPrimary"
+            android:background="@drawable/btn"/>
     </LinearLayout>
 
     <Button
         android:text="Şifreni mi unuttun?"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:id="@+id/yeniSifreButton"
-        android:background="@null"
-        android:textColor="#FFFF"
-        android:layout_marginBottom="8dp"
-        />
+        android:background="@drawable/btn"
+        android:textColor="@color/colorPrimary" />
 
     <TextView
         android:layout_width="match_parent"
@@ -97,7 +94,8 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="15dp"
-        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
 
 
 

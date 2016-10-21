@@ -7,48 +7,54 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorPrimary"
     tools:context="com.example.okanaydin.firebaseauthentication.UyeOl">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:src="@mipmap/icon"
         android:id="@+id/imageView" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/view">
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:background="@drawable/shape"
             android:hint="@string/email"
-            android:id="@+id/uyeEmail" />
+            android:id="@+id/uyeEmail"
+            android:layout_below="@+id/imageView"
+            android:layout_alignParentStart="true" />
 
-    </android.support.design.widget.TextInputLayout>
-
-
-
-    <android.support.design.widget.TextInputLayout
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent">
+        android:inputType="textPassword"
+        android:ems="10"
+        android:padding="10dp"
+        android:background="@drawable/shape"
+        android:id="@+id/uyeParola"
+        android:hint="@string/Parola"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/uyeEmail"
+        android:layout_alignParentStart="true" />
 
-    </android.support.design.widget.TextInputLayout>
+
+
 
     <Button
         android:text="Üye Ol!"
-        android:layout_width="100dp"
+        android:layout_width="200dp"
         android:layout_height="50dp"
-        android:textColor="#FFFF"
+        android:textColor="@color/colorPrimary"
         android:id="@+id/yeniUyeButton"
-        android:background="@color/sari"
-        android:layout_above="@+id/uyeGirisButton"
-        android:layout_centerHorizontal="true" />
+        android:background="@drawable/btn"
+        android:layout_below="@+id/uyeParola"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp" />
+
 
 
     <Button
@@ -57,20 +63,12 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:id="@+id/uyeGirisButton"
-        android:background="@null"
-        android:textColor="#FFFF"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" />
+        android:background="@drawable/btn"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@+id/yeniUyeButton"
+        android:layout_alignStart="@+id/yeniUyeButton"
+        android:layout_marginTop="30dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/uyeParola"
-        android:hint="@string/Parola"
-        android:layout_below="@+id/view"
-        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
