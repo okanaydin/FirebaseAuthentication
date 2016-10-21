@@ -175,4 +175,5 @@ public class Giris extends AppCompatActivity implements GoogleApiClient.OnConnec
         //Log.d(TAG, "onConnectionFailed:" + connectionResult);
         Toast.makeText(this, "Google Play Services error.", Toast.LENGTH_SHORT).show();
     }
+
 }
